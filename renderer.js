@@ -1,4 +1,6 @@
-const { ipcRenderer } = require('electron');
+const {
+    ipcRenderer
+} = require('electron');
 
 function updateNetworkStatus() {
     console.log(`Sending network status: ${navigator.onLine ? 'online' : 'offline'}`);
