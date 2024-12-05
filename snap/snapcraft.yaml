@@ -1,0 +1,60 @@
+name: ken-gemini
+version: 0.0.1
+summary: Ken's Gemini
+description: Web app for Gemini
+grade: stable
+confinement: strict
+base: core24
+
+platforms:
+  amd64:
+  arm64:
+compression: lzo
+
+parts:
+  ken-gemini:
+    plugin: nil
+    source: .
+    build-packages:
+      - npm
+    override-build: |
+      npm install
+      npm run build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/unpacked
+      cp $SNAPCRAFT_PROJECT_DIR/com.github.kenvandine.ken-gemini.desktop $SNAPCRAFT_PART_INSTALL/unpacked/
+      cp $SNAPCRAFT_PROJECT_DIR/icon.png $SNAPCRAFT_PART_INSTALL/
+      mv dist/linux*-unpacked/* $SNAPCRAFT_PART_INSTALL/unpacked 
+    prime:
+      - unpacked
+      - icon.png
+      - -*/chrome-sandbox
+      - -*/resources/app.asar.unpacked/node_modules/sharp/vendor/lib
+      - -*/resources/app.asar.unpacked/node_modules/sharp/vendor/include
+
+  cleanup:
+    after: [ ken-gemini ]
+    plugin: nil
+    build-snaps: [ gnome-46-2404 ]
+    override-prime: |
+        set -eux
+        cd /snap/gnome-46-2404/current
+        find . -type f,l -exec rm -f $SNAPCRAFT_PRIME/{} \;
+
+plugs:
+  shmem:
+    interface: shared-memory
+    private: true
+
+apps:
+  ken-gemini:
+    extensions: [gnome]
+    desktop: unpacked/com.github.kenvandine.ken-gemini.desktop
+    command: unpacked/ken-gemini --use-tray-icon --no-sandbox --disable-seccomp-filter-sandbox
+    plugs:
+      - shmem
+      - network
+      - audio-playback
+      - audio-record
+    environment:
+      GTK_USE_PORTAL: "1"
+      TMPDIR: $XDG_RUNTIME_DIR
