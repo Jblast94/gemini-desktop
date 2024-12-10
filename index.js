@@ -21,6 +21,11 @@ function createWindow () {
 
   win.removeMenu();
 
+  win.on('close', (event) => {
+    event.preventDefault();
+    win.hide();
+  });
+
   tray = new Tray(icon);
 
   const contextMenu = Menu.buildFromTemplate([
@@ -36,7 +41,12 @@ function createWindow () {
       }
     },
     { type: 'separator' },
-    { label: 'Quit', role: 'quit' }
+    { label: 'Quit',
+      click: () => {
+	console.log("Quit clicked, Exiting");
+	app.exit();
+      }
+    },
   ]);
 
   tray.setToolTip('Gemini');
@@ -67,12 +77,22 @@ function createWindow () {
   win.loadURL(appURL);
 }
 
+// Ensure we're a single instance app
+const firstInstance = app.requestSingleInstanceLock();
+
+if (!firstInstance) {
+  app.quit();
+} else {
+  app.on("second-instance", (event) => {
+    console.log("second-instance");
+    win.show();
+  });
+}
+
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  console.log("window-all-closed");
 });
 
 app.on('activate', () => {
