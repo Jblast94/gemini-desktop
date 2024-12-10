@@ -1,6 +1,6 @@
-name: ken-gemini
-version: 0.0.1
-summary: Ken's Gemini
+name: gemini-desktop
+version: git
+summary: Gemini
 description: Web app for Gemini
 grade: stable
 confinement: strict
@@ -12,16 +12,17 @@ platforms:
 compression: lzo
 
 parts:
-  ken-gemini:
+  gemini-desktop:
     plugin: nil
     source: .
     build-packages:
       - npm
+      - git
     override-build: |
       npm install
       npm run build
       mkdir -p $SNAPCRAFT_PART_INSTALL/unpacked
-      cp $SNAPCRAFT_PROJECT_DIR/com.github.kenvandine.ken-gemini.desktop $SNAPCRAFT_PART_INSTALL/unpacked/
+      cp $SNAPCRAFT_PROJECT_DIR/com.github.kenvandine.gemini-desktop.desktop $SNAPCRAFT_PART_INSTALL/unpacked/
       cp $SNAPCRAFT_PROJECT_DIR/icon.png $SNAPCRAFT_PART_INSTALL/
       mv dist/linux*-unpacked/* $SNAPCRAFT_PART_INSTALL/unpacked 
     prime:
@@ -32,7 +33,7 @@ parts:
       - -*/resources/app.asar.unpacked/node_modules/sharp/vendor/include
 
   cleanup:
-    after: [ ken-gemini ]
+    after: [ gemini-desktop ]
     plugin: nil
     build-snaps: [ gnome-46-2404 ]
     override-prime: |
@@ -46,10 +47,10 @@ plugs:
     private: true
 
 apps:
-  ken-gemini:
+  gemini-desktop:
     extensions: [gnome]
-    desktop: unpacked/com.github.kenvandine.ken-gemini.desktop
-    command: unpacked/ken-gemini --use-tray-icon --no-sandbox --disable-seccomp-filter-sandbox
+    desktop: unpacked/com.github.kenvandine.gemini-desktop.desktop
+    command: unpacked/gemini-desktop --use-tray-icon --no-sandbox --disable-seccomp-filter-sandbox
     plugs:
       - shmem
       - network

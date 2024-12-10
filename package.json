@@ -1,7 +1,7 @@
 {
-  "name": "ken-gemini",
+  "name": "gemini-desktop",
   "version": "0.0.1",
-  "description": "Your Copilot",
+  "description": "Gemini",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kenvandine/ken-gemini.git"
+    "url": "git+https://github.com/kenvandine/gemini-desktop.git"
   },
   "author": "Ken VanDine",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/kenvandine/ken-gemini/issues"
+    "url": "https://github.com/kenvandine/gemini-desktop/issues"
   },
-  "homepage": "https://github.com/kenvandine/ken-gemini#readme",
+  "homepage": "https://github.com/kenvandine/gemini-desktop#readme",
   "devDependencies": {
     "electron": "^33.2.0",
     "electron-builder": "^25.1.8",

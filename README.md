@@ -8,7 +8,7 @@ Unofficial wrapper for Google's Gemini, providing a native Linux desktop experin
 This project and its contributors are not affiliated with Google. This is simply an Electron wrapper that loads the offical Google Gemini web application.
 # Installation
 
-[![Get it from the Snap Store](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-white.png)](https://snapcraft.io/ken-gemini)
+[![Get it from the Snap Store](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-white.png)](https://snapcraft.io/gemini-desktop)
 
 ## Requirements
 
@@ -19,7 +19,7 @@ You will need to install [npm](https://www.npmjs.com/), the Node.js package mana
 Once you have npm, clone the wrapper to a convenient location:
 
 ```bash
-git clone https://github.com/kenvandine/ken-gemini.git
+git clone https://github.com/kenvandine/gemini-desktop.git
 ```
 
 ## Building
