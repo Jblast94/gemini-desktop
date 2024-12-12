@@ -1,10 +1,22 @@
 name: gemini-desktop
 version: git
 summary: Gemini
-description: Web app for Gemini
+description: |
+  Unofficial Web app for Google Gemini providing the desktop user
+  experience you would expect on Ubuntu or any other Linux desktop
+
+  For microphone access you need to connect the audio-record interface:
+
+     sudo snap connect gemini-desktop:audio-record
+
 grade: stable
 confinement: strict
 base: core24
+contact: https://github.com/kenvandine/gemini-desktop/issues
+issues: https://github.com/kenvandine/gemini-desktop/issues
+website: https://github.com/kenvandine/gemini-desktop
+license: GPL-3.0+
+icon: icon.png
 
 platforms:
   amd64:
