@@ -1,5 +1,4 @@
 name: gemini-desktop
-version: git
 summary: Gemini
 description: |
   Unofficial Web app for Google Gemini providing the desktop user
@@ -31,6 +30,7 @@ parts:
       - npm
       - git
     override-build: |
+      craftctl set version=$(git describe --tags --abbrev=10)
       npm install
       npm run build
       mkdir -p $SNAPCRAFT_PART_INSTALL/unpacked
