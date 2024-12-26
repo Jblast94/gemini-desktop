@@ -8,6 +8,7 @@ description: |
 
      sudo snap connect gemini-desktop:audio-record
 
+adopt-info: gemini-desktop
 grade: stable
 confinement: strict
 base: core24
