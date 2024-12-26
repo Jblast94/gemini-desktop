@@ -10,6 +10,9 @@ This project and its contributors are not affiliated with Google. This is simply
 
 [![Get it from the Snap Store](https://raw.githubusercontent.com/snapcore/snap-store-badges/master/EN/%5BEN%5D-snap-store-white.png)](https://snapcraft.io/gemini-desktop)
 
+[![gemini-desktop](https://snapcraft.io/gemini-desktop/badge.svg)](https://snapcraft.io/gemini-desktop)
+[![gemini-desktop](https://snapcraft.io/gemini-desktop/trending.svg?name=0)](https://snapcraft.io/gemini-desktop)
+
 ## Requirements
 
 You will need to install [npm](https://www.npmjs.com/), the Node.js package manager. On most distributions, the package is simply called `npm`.
